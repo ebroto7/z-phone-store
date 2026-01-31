@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Cache
+.cache/
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+
+# Generated
+next-env.d.ts
