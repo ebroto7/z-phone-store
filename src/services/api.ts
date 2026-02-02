@@ -1,0 +1,67 @@
+/**
+ * API Service
+ * Funciones para comunicarse con la API de móviles.
+ *
+ * Configuración:
+ * - NEXT_PUBLIC_API_URL: URL base de la API (client + server)
+ * - API_KEY: Clave de autenticación (solo server)
+ */
+
+import type { ProductListItem, Product, GetProductsParams } from '@/types';
+
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? '';
+const API_KEY = process.env.API_KEY ?? '';
+
+/**
+ * Fetch genérico con headers de autenticación
+ */
+async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  const url = `${API_BASE}${endpoint}`;
+
+  console.log('📡 Fetching:', url);
+
+  const response = await fetch(url, {
+    ...options,
+    cache: 'no-store', // Evitar cache de Next.js
+    headers: {
+      'x-api-key': API_KEY,
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`API Error: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Obtener lista de productos
+ * GET /products?search=X&limit=N&offset=N
+ */
+export async function getProducts(params?: GetProductsParams): Promise<ProductListItem[]> {
+  const searchParams = new URLSearchParams();
+
+  if (params?.search) {
+    searchParams.set('search', params.search);
+  }
+  if (params?.limit) {
+    searchParams.set('limit', params.limit.toString());
+  }
+  if (params?.offset) {
+    searchParams.set('offset', params.offset.toString());
+  }
+
+  const query = searchParams.toString();
+  return fetchAPI<ProductListItem[]>(`products${query ? `?${query}` : ''}`);
+}
+
+/**
+ * Obtener detalle de un producto
+ * GET /products/:id
+ */
+export async function getProductById(id: string): Promise<Product> {
+  return fetchAPI<Product>(`products/${id}`);
+}

@@ -1,20 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { ProductGrid } from './ProductGrid';
+import type { ProductListItem } from '@/types';
 
-const mockProducts = [
+const mockProducts: ProductListItem[] = [
   {
     id: '1',
     brand: 'Apple',
     name: 'iPhone 15',
-    price: 999,
+    basePrice: 999,
     imageUrl: '/iphone.jpg',
   },
   {
     id: '2',
     brand: 'Samsung',
     name: 'Galaxy S24',
-    price: 899,
+    basePrice: 899,
     imageUrl: '/samsung.jpg',
   },
 ];
@@ -48,7 +49,8 @@ describe('ProductGrid', () => {
   });
 
   it('renders single product correctly', () => {
-    render(<ProductGrid products={[mockProducts[0]]} />);
+    const singleProduct = mockProducts[0]!;
+    render(<ProductGrid products={[singleProduct]} />);
 
     expect(screen.getByText('1 RESULTS')).toBeInTheDocument();
     expect(screen.getByText('iPhone 15')).toBeInTheDocument();

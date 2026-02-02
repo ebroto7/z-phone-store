@@ -14,18 +14,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import type { ProductListItem } from '@/types';
 import styles from './SmartphoneCard.module.css';
 
-export interface SmartphoneCardProps {
-  id: string;
-  brand: string;
-  name: string;
-  price: number;
-  imageUrl: string;
-}
-
-export function SmartphoneCard({ id, brand, name, price, imageUrl }: SmartphoneCardProps) {
-  const formattedPrice = `${price} EUR`;
+export function SmartphoneCard({ id, brand, name, basePrice, imageUrl }: ProductListItem) {
+  const formattedPrice = `${basePrice} EUR`;
 
   return (
     <Link href={`/product/${id}`} className={styles.card}>

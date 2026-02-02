@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { SmartphoneCard } from './SmartphoneCard';
+import type { ProductListItem } from '@/types';
 
-const mockProduct = {
+const mockProduct: ProductListItem = {
   id: '1',
   brand: 'Apple',
   name: 'iPhone 15 Pro',
-  price: 1199,
+  basePrice: 1199,
   imageUrl: '/iphone.jpg',
 };
 
@@ -35,8 +36,8 @@ describe('SmartphoneCard', () => {
   });
 
   // === EDGE CASES ===
-  it('handles price of 0', () => {
-    render(<SmartphoneCard {...mockProduct} price={0} />);
+  it('handles basePrice of 0', () => {
+    render(<SmartphoneCard {...mockProduct} basePrice={0} />);
 
     expect(screen.getByText('0 EUR')).toBeInTheDocument();
   });

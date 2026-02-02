@@ -12,11 +12,12 @@
  * - max-width: 400px
  */
 
-import { SmartphoneCard, type SmartphoneCardProps } from '../SmartphoneCard/SmartphoneCard';
+import { SmartphoneCard } from '../SmartphoneCard/SmartphoneCard';
+import type { ProductListItem } from '@/types';
 import styles from './ProductGrid.module.css';
 
 interface ProductGridProps {
-  products: SmartphoneCardProps[];
+  products: ProductListItem[];
   totalResults?: number;
 }
 
@@ -26,11 +27,13 @@ export function ProductGrid({ products, totalResults }: ProductGridProps) {
   return (
     <section className={styles.container}>
       <p className={styles.resultsCount}>{count} RESULTS</p>
-      <div className={styles.grid}>
+      <ul className={styles.grid}>
         {products.map((product) => (
+          <li key={product.id}>
           <SmartphoneCard key={product.id} {...product} />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

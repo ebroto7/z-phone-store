@@ -1,15 +1,30 @@
-import { ProductGrid } from '@/components/product/ProductGrid/ProductGrid';
+import { ProductProvider } from '@/context/ProductContext';
+import { HomeContent } from '@/components/home/HomeContent';
 import { SearchBar } from '@/components/ui/SearchBar/SearchBar';
+import { getProducts } from '@/services/api';
 import { mockPhones } from '@/data/mockPhones';
 import styles from './page.module.css';
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic';
+
+export default async function HomePage() {
+  let products;
+
+  try {
+    products = await getProducts({ limit: 20 });
+  } catch (error) {
+    console.error('API fetch failed, using mock data:', error);
+    products = mockPhones;
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.searchContainer}>
-        <SearchBar />
-      </div>
-      <ProductGrid products={mockPhones} />
-    </main>
+    <ProductProvider initialProducts={products}>
+      <main className={styles.main}>
+        <div className={styles.searchContainer}>
+          <SearchBar />
+        </div>
+        <HomeContent />
+      </main>
+    </ProductProvider>
   );
 }

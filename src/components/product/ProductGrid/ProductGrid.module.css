@@ -30,6 +30,9 @@
   display: grid;
   grid-template-columns: 1fr; /* Mobile: 1 columna, full width */
   width: 100%;
+  list-style: none; /* Quita los bullets del ul */
+  padding: 0;
+  margin: 0;
 }
 
 /* Tablet+: grid responsive con minmax */
