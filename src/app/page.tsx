@@ -1,5 +1,5 @@
 import { ProductGrid } from '@/components/product/ProductGrid/ProductGrid';
-import { SearchBar } from '@/components/ui/SearchBar';
+import { SearchBar } from '@/components/ui/SearchBar/SearchBar';
 import { mockPhones } from '@/data/mockPhones';
 import styles from './page.module.css';
 

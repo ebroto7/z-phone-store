@@ -15,7 +15,6 @@
 'use client';
 
 import { useState, type ChangeEvent } from 'react';
-import Image from 'next/image';
 import styles from './SearchBar.module.css';
 
 interface SearchBarProps {
@@ -57,7 +56,7 @@ export function SearchBar({
             onClick={handleClear}
             aria-label="Clear search"
           >
-            <Image
+            <img
               src="/close_Small.svg"
               alt="Clear"
               width={20}
