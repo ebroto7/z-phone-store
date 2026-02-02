@@ -3,7 +3,19 @@
  * Estilos pixel-perfect según Figma.
  */
 
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .card {
+  animation: slideInFromRight 0.4s ease-out backwards;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,12 +25,11 @@
   gap: 24px;
   background-color: #FFFFFF;
   text-decoration: none;
-  box-shadow: 0 0 0 0.5px #000000; /* Borde que se superpone naturalmente */
+  box-shadow: 0 0 0 0.5px #000000;
   overflow: hidden;
 }
 
-/* Capa negra que crece desde abajo */
-/* Spring: masa=1, rigidez=80, amortiguación=20 */
+/* Capa negra que crece desde abajo en hover */
 .card::before {
   content: '';
   position: absolute;
@@ -29,7 +40,6 @@
   background-color: #000000;
   transform: scaleY(0);
   transform-origin: bottom;
-  /* cubic-bezier con overshoot para simular spring */
   transition: transform 0.3s cubic-bezier(0.66, 1, 1, 1);
   z-index: 0;
 }
@@ -74,7 +84,7 @@
   flex-direction: column;
   gap: 4px;
   flex: 1;
-  min-width: 0; /* Para que truncate funcione */
+  min-width: 0;
 }
 
 .brand {

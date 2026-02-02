@@ -1,27 +1,22 @@
-/**
- * SmartphoneCard.tsx
- * Tarjeta de producto para mostrar smartphones en el grid.
- *
- * Especificaciones Figma:
- * - Border: 0.5px solid #000000
- * - Padding: 16px
- * - Gap interno: 24px
- * - Tipografía: Helvetica Neue Light
- *   - Brand: 10px, uppercase, #79736D
- *   - Name: 12px, uppercase, #000000
- *   - Price: 12px, #000000, align right
- */
-
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ProductListItem } from '@/types';
 import styles from './SmartphoneCard.module.css';
 
-export function SmartphoneCard({ id, brand, name, basePrice, imageUrl }: ProductListItem) {
+interface SmartphoneCardProps extends ProductListItem {
+  index?: number;
+}
+
+export function SmartphoneCard({ id, brand, name, basePrice, imageUrl, index = 0 }: SmartphoneCardProps) {
   const formattedPrice = `${basePrice} EUR`;
+  const animationDelay = `${index * 0.05}s`;
 
   return (
-    <Link href={`/product/${id}`} className={styles.card}>
+    <Link
+      href={`/product/${id}`}
+      className={styles.card}
+      style={{ animationDelay }}
+    >
       <div className={styles.imageWrapper}>
         <Image
           src={imageUrl}

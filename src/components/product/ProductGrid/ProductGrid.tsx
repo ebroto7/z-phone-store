@@ -28,9 +28,9 @@ export function ProductGrid({ products, totalResults }: ProductGridProps) {
     <section className={styles.container}>
       <p className={styles.resultsCount}>{count} RESULTS</p>
       <ul className={styles.grid}>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <li key={product.id}>
-          <SmartphoneCard key={product.id} {...product} />
+            <SmartphoneCard {...product} index={index} />
           </li>
         ))}
       </ul>
