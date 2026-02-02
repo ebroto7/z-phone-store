@@ -1,0 +1,40 @@
+/**
+ * ColorOptions.module.css
+ *
+ * Especificaciones del Figma:
+ *
+ * Container Color options:
+ * - Flujo: Vertical (colores arriba, label abajo)
+ * - Gap entre filas: según Figma
+ *
+ * Fila de colores:
+ * - Flujo: Horizontal
+ * - Gap: 10px entre cada Color
+ *
+ * Label del color seleccionado:
+ * - Tipografía: Helvetica Neue, 300, 14px
+ * - Color: #000000
+ */
+
+.container {
+  /* Layout vertical */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* 8px entre colores y label */
+}
+
+/* Fila de colores */
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio exacto del Figma */
+}
+
+/* Label con el nombre del color */
+.label {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base); /* 14px */
+  font-weight: var(--font-weight-light); /* 300 */
+  color: var(--color-content-high);
+  line-height: 1;
+}

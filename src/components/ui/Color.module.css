@@ -1,0 +1,64 @@
+/**
+ * Color.module.css
+ *
+ * Especificaciones EXACTAS del Figma:
+ *
+ * Componente Color:
+ * - Tamaño total: 24×24px
+ * - Borde: 1px
+ * - Padding interno: el swatch ocupa todo el espacio interior
+ *
+ * Selected=False:
+ * - Borde: 1px #CCCCCC (gris)
+ *
+ * Selected=True:
+ * - Borde: 1px #000000 (negro)
+ */
+
+.container {
+  /* Reset de botón */
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+
+  /* Tamaño exacto del Figma */
+  width: 24px;
+  height: 24px;
+
+  /* Borde por defecto: gris */
+  border: var(--border-width) solid var(--color-border-mid);
+
+  /* Sin border-radius - es un cuadrado */
+  border-radius: 0;
+
+  /* Contenedor del swatch */
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: var(--border-width) ;
+
+  /* Transición suave */
+  transition: border-color var(--transition-fast);
+}
+
+/* Estado seleccionado: borde negro */
+.container.selected {
+  border-color: var(--color-content-high);
+}
+
+
+/* Focus para accesibilidad */
+.container:focus-visible {
+  outline: 2px solid var(--color-content-high);
+  outline-offset: 2px;
+}
+
+/* El cuadrado de color interior */
+.swatch {
+  /* Ocupa todo el espacio disponible */
+  flex: 1;
+
+  /* Sin borde adicional */
+  border: none;
+}

@@ -1,0 +1,60 @@
+
+.row {
+  /* Layout horizontal */
+  display: flex;
+  align-items: flex-start;
+
+  /* Padding vertical: 16px */
+  padding: 16px 0;
+
+  /* Border inferior: 0.5px negro */
+  border-bottom: 0.5px solid #000000;
+}
+
+/* =============================================
+   LABEL (etiqueta)
+   ============================================= */
+
+.label {
+  /* Ancho fijo para alinear todos los valores */
+  /* Mobile: 150px, Tablet+: 300px */
+  min-width: 150px;
+  flex-shrink: 0;
+
+  /* Tipografía */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1;
+
+  /* Color negro */
+  color: #000000;
+
+  /* MAYÚSCULAS */
+  text-transform: uppercase;
+}
+
+/* Tablet y mayores (768px+) */
+@media (min-width: 768px) {
+  .label {
+    min-width: 300px;
+  }
+}
+
+/* =============================================
+   VALUE (dato/valor)
+   ============================================= */
+
+.value {
+  /* Ocupa el espacio restante */
+  flex: 1;
+
+  /* Tipografía */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.4;
+
+  /* Color negro */
+  color: #000000;
+}

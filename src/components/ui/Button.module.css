@@ -1,0 +1,135 @@
+/**
+ * SDS Button - CSS Module
+ * Pixel-perfect implementation from Figma
+ *
+ * 32 variantes totales:
+ * 2 (Feedback) × 2 (Breakpoint) × 2 (Extra Height) × 4 (State)
+ */
+
+/* =============================================
+   BASE - Estilos comunes
+   ============================================= */
+
+.button {
+  /* Reset */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  /* Tipografía - usando variables del design system */
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-sm);
+  line-height: 16px;
+  letter-spacing: 0.08em; /* 8% - específico de botones */
+  text-transform: uppercase;
+  text-align: center;
+
+  /* Interacción */
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* =============================================
+   TAMAÑOS (Breakpoint)
+   - sm = XS-M: altura 48px, padding-y 4px
+   - lg = L-XL: altura 40px, padding-y 3px
+   ============================================= */
+
+/* XS-M (móvil/tablet pequeño) */
+.sm {
+  height: 48px;
+  padding: 4px 7px;
+}
+
+/* L-XL (desktop/tablet grande) */
+.lg {
+  height: 40px;
+  padding: 3px 7px;
+}
+
+/* =============================================
+   EXTRA HEIGHT
+   Aumenta padding vertical
+   ============================================= */
+
+.sm.extraHeight {
+  height: 56px;
+  padding: 5px 7px;
+}
+
+.lg.extraHeight {
+  height: 48px;
+  padding: 4px 7px;
+}
+
+/* =============================================
+   VARIANTE: PRIMARY (filled)
+   Fondo sólido oscuro, texto blanco
+   ============================================= */
+
+.primary {
+  background-color: var(--color-ink);
+  border: none;
+  color: var(--color-bg-primary);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-ink-hover);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-ink-active);
+}
+
+.primary:disabled {
+  background-color: #F3F2F2;
+  color: #C28F8C;
+}
+
+/* =============================================
+   VARIANTE: STANDARD (outlined)
+   Solo borde, fondo transparente
+   ============================================= */
+
+.standard {
+  background-color: transparent;
+  border: var(--border-width-hairline) solid var(--color-ink);
+  color: var(--color-content-high);
+}
+
+.standard:hover:not(:disabled) {
+  border-color: var(--color-ink-hover);
+  color: var(--color-ink-hover);
+}
+
+.standard:active:not(:disabled) {
+  border-color: var(--color-ink-active);
+  color: var(--color-ink-active);
+}
+
+.standard:disabled {
+  border-color: #DBD9D7;
+  color: #DBD9D7;
+}
+
+/* =============================================
+   ANCHO
+   El botón se adapta a su contenedor padre.
+   - Si el padre tiene width fijo → el botón lo hereda
+   - Si el padre es flex → usa flex: 1 para repartir espacio
+   ============================================= */
+
+.button {
+  width: 100%;
+}

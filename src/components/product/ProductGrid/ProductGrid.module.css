@@ -1,0 +1,62 @@
+/**
+ * ProductGrid.module.css
+ * Grid responsive con auto-fit para productos.
+ *
+ * Estrategia:
+ * - minmax(320px, 1fr): Cards mínimo 320px, máximo 1fr
+ * - auto-fit: Ajusta columnas automáticamente
+ * - En mobile (<656px): Solo cabe 1 columna
+ * - En tablet/desktop: 2+ columnas según espacio
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding: 0 16px;
+}
+
+.resultsCount {
+  font-family: var(--font-family-base);
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: 1 columna, full width */
+  width: 100%;
+}
+
+/* Tablet+: grid responsive con minmax */
+@media (min-width: 656px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 100px;
+  }
+}
+
+/* Desktop XL: máximo 5 columnas, luego crecen */
+/* 5 cols × 320px + 200px padding = 1800px */
+@media (min-width: 1800px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

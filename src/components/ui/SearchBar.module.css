@@ -1,0 +1,112 @@
+/**
+ * SearchBar.module.css
+ *
+ * Especificaciones EXACTAS del Figma:
+ *
+ * Container:
+ * - Flujo: Horizontal
+ * - Gap: 12px
+ * - Padding bottom: 8px
+ * - Borde inferior: 0.5px #000000
+ *
+ * Input text (Filled):
+ * - Fuente: Helvetica Neue
+ * - Peso: 300 (Light)
+ * - Tamaño: 16px
+ * - Line-height: 100%
+ * - Color: #000000
+ *
+ * Placeholder (Empty):
+ * - Color: #AAAAAA
+ * - Peso: 300
+ *
+ * Search icon: 20×20px
+ * Close button: 20×19px
+ */
+
+.container {
+  width: 100%;
+}
+
+/* =============================================
+   INPUT WRAPPER
+   ============================================= */
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  /* Padding y borde del Figma */
+  padding-bottom: var(--space-2);
+  border-bottom: var(--border-width-hairline) solid var(--color-content-high);
+}
+
+/* =============================================
+   INPUT - Estilo Underline
+   ============================================= */
+
+.input {
+  /* Full width, sin flex-shrink */
+  flex: 1;
+  min-width: 0;
+
+  /* Sin padding propio - el wrapper maneja el padding */
+  padding: 0;
+  padding-right: 32px; /* Espacio para el botón X */
+
+  /* Tipografía usando variables del design system */
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-light);
+  line-height: 100%;
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-content-high);
+
+  /* Sin bordes - el wrapper tiene el borde */
+  background: transparent;
+  border: none;
+}
+
+.input::placeholder {
+  /* Placeholder usando variable del design system */
+  color: var(--color-placeholder);
+  font-weight: var(--font-weight-light);
+}
+
+.input:focus {
+  outline: none;
+}
+
+/* =============================================
+   CLEAR BUTTON (X) - 20×19px
+   ============================================= */
+
+.clearButton {
+  /* Posición absoluta a la derecha */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* Tamaño del Figma (20x19 específico del close icon) */
+  width: var(--icon-size-sm);
+  height: 19px;
+
+  /* Reset */
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  /* Icono */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-content-high);
+}
+
+.clearButton:hover {
+  opacity: 0.7;
+}

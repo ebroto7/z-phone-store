@@ -1,0 +1,64 @@
+/**
+ * Bag.module.css
+ *
+ * Especificaciones EXACTAS del Figma:
+ *
+ * Container:
+ * - Flujo: Horizontal
+ * - Ancho: Adaptar (33px)
+ * - Altura: Adaptar (26px)
+ * - Padding: 4px top/bottom
+ * - Gap: 6px
+ *
+ * Icono:
+ * - 24x24px
+ *
+ * Texto contador:
+ * - Fuente: Helvetica Neue
+ * - Peso: 300 (Light)
+ * - Tamaño: 16px
+ * - Line-height: 16px
+ * - Letter-spacing: 0%
+ * - Color: #000000
+ */
+
+.container {
+  /* Layout horizontal */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* Específico de Bag - no hay variable para 6px */
+
+  /* Padding vertical del Figma */
+  padding: var(--space-1) 0;
+
+  /* Reset */
+  background: none;
+  border: none;
+}
+
+/* =============================================
+   ICONO
+   ============================================= */
+
+.icon {
+  /* Tamaño usando variable del design system */
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  display: block;
+}
+
+/* =============================================
+   CONTADOR
+   ============================================= */
+
+.count {
+  /* Tipografía usando variables del design system */
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-light);
+  line-height: var(--font-size-md);
+  letter-spacing: var(--letter-spacing-normal);
+
+  /* Color */
+  color: var(--color-content-high);
+}

@@ -17,22 +17,40 @@
   --color-content-high: #000000;
   --color-content-mid: #666666;
   --color-content-low: #999999;
+  --color-placeholder: #AAAAAA;
+
+  /* Ink colors (del Figma - casi negro para botones e interacciones) */
+  --color-ink: #1B1A18;
+  --color-ink-hover: #282624;
+  --color-ink-active: #363331;
 
   /* Borders */
   --color-border: #000000;
+  --color-border-mid: #CCCCCC; /* Storage unselected border */
   --color-border-light: #e5e5e5;
 
-  /* Interactive - Buttons */
-  --color-btn-primary-bg: #000000;
+  /* Interactive - Buttons (from Figma SDS Button) */
+  /* Figma "ink" (slightly off-black) */
+  --color-btn-primary-bg: #1b1a18;
   --color-btn-primary-text: #ffffff;
-  --color-btn-primary-hover: #333333;
+  --color-btn-primary-hover-bg: #333333;
+  --color-btn-primary-active-bg: #1a1a1a;
 
   --color-btn-secondary-bg: transparent;
-  --color-btn-secondary-text: #000000;
-  --color-btn-secondary-hover: #f5f5f5;
+  --color-btn-secondary-text: #1b1a18;
+  --color-btn-secondary-border: #1b1a18;
+  --color-btn-secondary-hover-bg: #f5f5f5;
 
-  --color-btn-disabled-bg: #e5e5e5;
-  --color-btn-disabled-text: #999999;
+  /* Disabled states (exact Figma values) */
+  --color-btn-primary-disabled-bg: #f3f2f2;
+  --color-btn-primary-disabled-text: #dbd9d7;
+  --color-btn-secondary-disabled-border: #dbd9d7;
+  --color-btn-secondary-disabled-text: #dbd9d7;
+
+  /* Background states for interactions */
+  --color-background: #ffffff;
+  --color-background-hover: #f5f5f5;
+  --color-background-active: #ebebeb;
 
   /* States */
   --color-error: #d32f2f;
@@ -42,8 +60,8 @@
      TYPOGRAPHY
      ======================================== */
 
-  /* Font Family */
-  --font-family: Helvetica, Arial, sans-serif;
+  /* Font Family - Incluye Helvetica Neue del Figma */
+  --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* Font Sizes */
   --font-size-xs: 0.625rem; /* 10px */
@@ -55,6 +73,7 @@
   --font-size-2xl: 2rem; /* 32px */
 
   /* Font Weights */
+  --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
@@ -96,8 +115,8 @@
   --container-max-width: 1200px;
   --container-padding-x: var(--space-4);
 
-  /* Navbar */
-  --navbar-height: 60px;
+  /* Header (Figma: 80px) */
+  --navbar-height: 80px;
 
   /* Content */
   --content-padding-top: var(--space-20);
@@ -107,11 +126,19 @@
   --grid-gap: var(--space-4);
 
   /* ========================================
+     ICONS
+     ======================================== */
+
+  --icon-size-sm: 20px;
+  --icon-size-md: 24px;
+
+  /* ========================================
      BORDERS & RADIUS
      ======================================== */
 
   --border-width: 1px;
   --border-width-thick: 2px;
+  --border-width-hairline: 0.5px;
 
   --border-radius-none: 0;
   --border-radius-sm: 2px;
