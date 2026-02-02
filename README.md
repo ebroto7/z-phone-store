@@ -1,4 +1,4 @@
-# Zara Mobile Store
+# Z Mobile Store - MBST
 
 Tienda web de móviles - Prueba técnica Inditex.
 

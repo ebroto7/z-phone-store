@@ -4,7 +4,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'MBST - Mobile Store',
-  description: 'Zara Mobile Store Challenge',
+  description: 'Z Mobile Store Challenge',
 };
 
 export default function RootLayout({

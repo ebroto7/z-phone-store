@@ -3,19 +3,13 @@ import Link from 'next/link';
 import type { ProductListItem } from '@/types';
 import styles from './SmartphoneCard.module.css';
 
-interface SmartphoneCardProps extends ProductListItem {
-  index?: number;
-}
-
-export function SmartphoneCard({ id, brand, name, basePrice, imageUrl, index = 0 }: SmartphoneCardProps) {
+export function SmartphoneCard({ id, brand, name, basePrice, imageUrl }: ProductListItem) {
   const formattedPrice = `${basePrice} EUR`;
-  const animationDelay = `${index * 0.05}s`;
 
   return (
     <Link
       href={`/product/${id}`}
       className={styles.card}
-      style={{ animationDelay }}
     >
       <div className={styles.imageWrapper}>
         <Image

@@ -1,4 +1,4 @@
-# Backlog - Zara Mobile Store Challenge
+# Backlog - Z Mobile Store Challenge
 
 Gestión de tareas del proyecto. Marcamos con `[x]` las completadas.
 
