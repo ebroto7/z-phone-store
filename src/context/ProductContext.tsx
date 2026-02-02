@@ -8,11 +8,13 @@ interface ProductContextState {
   products: ProductListItem[];
   isLoading: boolean;
   searchTerm: string;
+  error: string | null;
 }
 
 interface ProductContextActions {
   searchProducts: (term: string) => Promise<void>;
   clearSearch: () => void;
+  clearError: () => void;
   setInitialProducts: (products: ProductListItem[]) => void;
 }
 
@@ -42,10 +44,12 @@ export function ProductProvider({ children, initialProducts = [] }: ProductProvi
   const [products, setProducts] = useState<ProductListItem[]>(initialProducts);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const [originalProducts, setOriginalProducts] = useState<ProductListItem[]>(initialProducts);
 
   const searchProducts = useCallback(async (term: string) => {
     setSearchTerm(term);
+    setError(null);
 
     if (!term.trim()) {
       setProducts(originalProducts);
@@ -58,13 +62,16 @@ export function ProductProvider({ children, initialProducts = [] }: ProductProvi
       const response = await fetch(`/api/products?search=${encodeURIComponent(term)}`);
 
       if (!response.ok) {
-        throw new Error('Error en búsqueda');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Error en búsqueda');
       }
 
       const data = await response.json();
       setProducts(data);
-    } catch (error) {
-      console.error('Error buscando productos:', error);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Error desconocido';
+      setError(message);
+      setProducts([]);
     } finally {
       setIsLoading(false);
     }
@@ -72,8 +79,13 @@ export function ProductProvider({ children, initialProducts = [] }: ProductProvi
 
   const clearSearch = useCallback(() => {
     setSearchTerm('');
+    setError(null);
     setProducts(originalProducts);
   }, [originalProducts]);
+
+  const clearError = useCallback(() => {
+    setError(null);
+  }, []);
 
   const setInitialProducts = useCallback((newProducts: ProductListItem[]) => {
     setProducts(newProducts);
@@ -84,8 +96,10 @@ export function ProductProvider({ children, initialProducts = [] }: ProductProvi
     products,
     isLoading,
     searchTerm,
+    error,
     searchProducts,
     clearSearch,
+    clearError,
     setInitialProducts,
   };
 

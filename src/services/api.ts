@@ -1,37 +1,39 @@
 /**
  * API Service
  * Funciones para comunicarse con la API de móviles.
- *
- * Configuración:
- * - NEXT_PUBLIC_API_URL: URL base de la API (client + server)
- * - API_KEY: Clave de autenticación (solo server)
  */
 
 import type { ProductListItem, Product, GetProductsParams } from '@/types';
+import { createApiError, createNetworkError } from '@/lib/errors';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? '';
 const API_KEY = process.env.API_KEY ?? '';
 
 /**
- * Fetch genérico con headers de autenticación
+ * Fetch genérico con headers de autenticación y manejo de errores
  */
 async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const url = `${API_BASE}${endpoint}`;
 
-  console.log('📡 Fetching:', url);
+  let response: Response;
 
-  const response = await fetch(url, {
-    ...options,
-    cache: 'no-store', // Evitar cache de Next.js
-    headers: {
-      'x-api-key': API_KEY,
-      'Content-Type': 'application/json',
-      ...options?.headers,
-    },
-  });
+  try {
+    response = await fetch(url, {
+      ...options,
+      cache: 'no-store',
+      headers: {
+        'x-api-key': API_KEY,
+        'Content-Type': 'application/json',
+        ...options?.headers,
+      },
+    });
+  } catch (error) {
+    // Error de red: sin conexión, timeout, DNS, etc.
+    throw createNetworkError(error instanceof Error ? error : undefined);
+  }
 
   if (!response.ok) {
-    throw new Error(`API Error: ${response.status}`);
+    throw createApiError(response.status);
   }
 
   return response.json();

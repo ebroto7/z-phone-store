@@ -1,18 +1,14 @@
 /**
  * Route Handler: /api/products
- *
- * Proxy seguro para que el cliente pueda buscar productos
- * sin exponer la API_KEY.
- *
- * GET /api/products?search=X&limit=N
+ * Proxy seguro para búsqueda de productos sin exponer API_KEY.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getProducts } from '@/services/api';
+import { isApiError } from '@/lib/errors';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-
   const search = searchParams.get('search') ?? undefined;
   const limit = searchParams.get('limit');
 
@@ -24,9 +20,15 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(products);
   } catch (error) {
-    console.error('API proxy error:', error);
+    if (isApiError(error)) {
+      return NextResponse.json(
+        { error: error.message, code: error.code },
+        { status: error.status || 500 }
+      );
+    }
+
     return NextResponse.json(
-      { error: 'Failed to fetch products' },
+      { error: 'Error inesperado', code: 'UNKNOWN_ERROR' },
       { status: 500 }
     );
   }
