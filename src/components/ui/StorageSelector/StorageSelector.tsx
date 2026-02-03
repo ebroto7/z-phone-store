@@ -42,7 +42,7 @@ export function StorageSelector({ options, selected, onChange }: StorageSelector
             type="button"
             className={`${styles.option} ${isSelected ? styles.selected : ''}`}
             onClick={() => onChange(option)}
-            // Accesibilidad: indicamos el estado de selección
+            aria-label={`Almacenamiento ${option}`}
             aria-pressed={isSelected}
           >
             {option}

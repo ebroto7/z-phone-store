@@ -1,0 +1,25 @@
+/* ===========================================
+   Skip Link - Accesibilidad
+   Oculto visualmente pero accesible con teclado
+   =========================================== */
+
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background-color: var(--color-content-high);
+  color: var(--color-background);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s ease;
+}
+
+.skipLink:focus {
+  top: 0;
+  outline: 2px solid var(--color-content-high);
+  outline-offset: 2px;
+}

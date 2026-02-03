@@ -71,16 +71,18 @@ export function CartItem({ item, onRemove, onUpdateQuantity }: CartItemProps) {
                 type="button"
                 className={styles.quantityButton}
                 onClick={handleDecrement}
-                aria-label="Reducir cantidad"
+                aria-label={`Reducir cantidad de ${name}. Cantidad actual: ${quantity}`}
               >
                 −
               </button>
-              <span className={styles.quantityValue}>{quantity}</span>
+              <span className={styles.quantityValue} aria-hidden="true">
+                {quantity}
+              </span>
               <button
                 type="button"
                 className={styles.quantityButton}
                 onClick={handleIncrement}
-                aria-label="Aumentar cantidad"
+                aria-label={`Aumentar cantidad de ${name}. Cantidad actual: ${quantity}`}
               >
                 +
               </button>

@@ -26,7 +26,9 @@ export function ProductGrid({ products, totalResults }: ProductGridProps) {
 
   return (
     <section className={styles.container}>
-      <p className={styles.resultsCount}>{count} RESULTS</p>
+      <p className={styles.resultsCount} role="status" aria-live="polite">
+        {count} RESULTS
+      </p>
       <ul className={styles.grid}>
         {products.map((product, index) => (
           <li key={`${product.id}-${index}`}>
