@@ -1,19 +1,47 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { Bag } from './Bag';
+
+// Mock del hook useCart
+vi.mock('@/context/CartContext', () => ({
+  useCart: vi.fn(),
+}));
+
+import { useCart } from '@/context/CartContext';
+const mockUseCart = vi.mocked(useCart);
 
 describe('Bag', () => {
   // === HAPPY PATH ===
-  it('renders inactive icon when count is 0', () => {
-    render(<Bag count={0} />);
+  it('renders inactive icon when cart is empty', () => {
+    mockUseCart.mockReturnValue({
+      items: [],
+      totalItems: 0,
+      totalPrice: 0,
+      addItem: vi.fn(),
+      removeItem: vi.fn(),
+      updateQuantity: vi.fn(),
+      clearCart: vi.fn(),
+    });
+
+    render(<Bag />);
 
     const icon = screen.getByRole('img');
     expect(icon).toHaveAttribute('src', '/cart_Inactive.svg');
     expect(icon).toHaveAttribute('alt', 'Empty cart');
   });
 
-  it('renders active icon when count > 0', () => {
-    render(<Bag count={3} />);
+  it('renders active icon when cart has items', () => {
+    mockUseCart.mockReturnValue({
+      items: [],
+      totalItems: 3,
+      totalPrice: 100,
+      addItem: vi.fn(),
+      removeItem: vi.fn(),
+      updateQuantity: vi.fn(),
+      clearCart: vi.fn(),
+    });
+
+    render(<Bag />);
 
     const icon = screen.getByRole('img');
     expect(icon).toHaveAttribute('src', '/cart_Active.svg');
@@ -21,27 +49,50 @@ describe('Bag', () => {
   });
 
   it('shows count number when items exist', () => {
-    render(<Bag count={5} />);
+    mockUseCart.mockReturnValue({
+      items: [],
+      totalItems: 5,
+      totalPrice: 100,
+      addItem: vi.fn(),
+      removeItem: vi.fn(),
+      updateQuantity: vi.fn(),
+      clearCart: vi.fn(),
+    });
+
+    render(<Bag />);
 
     expect(screen.getByText('5')).toBeInTheDocument();
   });
 
   // === EDGE CASES ===
   it('does not show count when empty', () => {
-    render(<Bag count={0} />);
+    mockUseCart.mockReturnValue({
+      items: [],
+      totalItems: 0,
+      totalPrice: 0,
+      addItem: vi.fn(),
+      removeItem: vi.fn(),
+      updateQuantity: vi.fn(),
+      clearCart: vi.fn(),
+    });
+
+    render(<Bag />);
 
     expect(screen.queryByText('0')).not.toBeInTheDocument();
   });
 
-  it('defaults to 0 when no count provided', () => {
-    render(<Bag />);
-
-    const icon = screen.getByRole('img');
-    expect(icon).toHaveAttribute('src', '/cart_Inactive.svg');
-  });
-
   it('handles large count numbers', () => {
-    render(<Bag count={99} />);
+    mockUseCart.mockReturnValue({
+      items: [],
+      totalItems: 99,
+      totalPrice: 1000,
+      addItem: vi.fn(),
+      removeItem: vi.fn(),
+      updateQuantity: vi.fn(),
+      clearCart: vi.fn(),
+    });
+
+    render(<Bag />);
 
     expect(screen.getByText('99')).toBeInTheDocument();
   });

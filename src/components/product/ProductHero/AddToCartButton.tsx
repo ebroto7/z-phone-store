@@ -1,6 +1,7 @@
 'use client';
 
 import { Product, ProductVariant } from '@/types';
+import { useCart } from '@/context/CartContext';
 import styles from './AddToCartButton.module.css';
 
 interface AddToCartButtonProps {
@@ -14,11 +15,12 @@ export function AddToCartButton({
   product,
   variant,
 }: AddToCartButtonProps) {
+  const { addItem } = useCart();
+
   const handleClick = () => {
     if (!variant) return;
 
-    // TODO: Conectar con CartContext
-    console.log('Adding to cart:', {
+    addItem({
       productId: product.id,
       name: product.name,
       brand: product.brand,

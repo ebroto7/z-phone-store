@@ -1,22 +1,18 @@
 'use client';
 
-
-
 import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
 import styles from './Bag.module.css';
 
-interface BagProps {
-  /** Número de items en el carrito */
-  count?: number;
-}
+export function Bag() {
+  const { totalItems } = useCart();
 
-export function Bag({ count = 0 }: BagProps) {
   // Determinar si está activo (tiene items)
-  const isActive = count > 0;
+  const isActive = totalItems > 0;
 
   // Seleccionar el SVG correcto
   const iconSrc = isActive ? '/cart_Active.svg' : '/cart_Inactive.svg';
-  const iconAlt = isActive ? `Cart with ${count} items` : 'Empty cart';
+  const iconAlt = isActive ? `Cart with ${totalItems} items` : 'Empty cart';
 
   return (
     <div className={styles.container}>
@@ -29,9 +25,9 @@ export function Bag({ count = 0 }: BagProps) {
         className={styles.icon}
       />
 
-      {/* Número - solo visible si count > 0 */}
+      {/* Número - solo visible si totalItems > 0 */}
       {isActive && (
-        <span className={styles.count}>{count}</span>
+        <span className={styles.count}>{totalItems}</span>
       )}
     </div>
   );
