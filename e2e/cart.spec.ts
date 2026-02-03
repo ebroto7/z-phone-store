@@ -129,4 +129,44 @@ test.describe('Carrito de compras', () => {
     // 6. Verificar que el badge muestra "2"
     await expect(bagCount).toHaveText('2');
   });
+
+  test('usuario puede completar la compra y ver página de éxito', async ({ page }) => {
+    // 1. Añadir un producto al carrito
+    await page.goto('/');
+
+    const firstProduct = page.locator('a[href^="/product/"]').first();
+    await firstProduct.click();
+
+    await expect(page).toHaveURL(/\/product\/.+/);
+
+    const storageButton = page.locator('button').filter({ hasText: /GB/i }).first();
+    await storageButton.click();
+
+    const colorButton = page.locator('button[aria-label^="Color "]').first();
+    await colorButton.click();
+
+    const addButton = page.getByRole('button', { name: /añadir/i });
+    await addButton.click();
+
+    // 2. Ir al carrito
+    await page.goto('/cart');
+
+    // 3. Hacer clic en "Pay"
+    const payButton = page.getByRole('button', { name: /pay/i });
+    await payButton.click();
+
+    // 4. Verificar que navegamos a la página de éxito
+    await expect(page).toHaveURL('/order/success');
+
+    // 5. Verificar que muestra mensaje de gracias
+    await expect(page.getByText(/gracias|thank/i)).toBeVisible();
+
+    // 6. Verificar que el carrito está vacío (badge no visible)
+    const bagCount = page.locator('header a[href="/cart"] span');
+    await expect(bagCount).not.toBeVisible();
+
+    // 7. Verificar que hay botón para volver a inicio
+    const homeButton = page.getByRole('link', { name: /inicio|home|continuar/i });
+    await expect(homeButton).toBeVisible();
+  });
 });

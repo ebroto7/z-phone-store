@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCart } from '@/context/CartContext';
 import styles from './CartFooter.module.css';
 
 interface CartFooterProps {
@@ -9,6 +11,14 @@ interface CartFooterProps {
 }
 
 export function CartFooter({ hasItems, totalPrice }: CartFooterProps) {
+  const router = useRouter();
+  const { clearCart } = useCart();
+
+  const handlePay = () => {
+    clearCart();
+    router.push('/order/success');
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
@@ -27,7 +37,7 @@ export function CartFooter({ hasItems, totalPrice }: CartFooterProps) {
             </div>
 
             {/* Pay button */}
-            <button type="button" className={styles.payBtn}>
+            <button type="button" className={styles.payBtn} onClick={handlePay}>
               PAY
             </button>
           </div>
