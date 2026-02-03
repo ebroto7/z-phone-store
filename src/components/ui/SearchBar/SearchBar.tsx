@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, type ChangeEvent } from 'react';
+import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDebounce } from '@/hooks/useDebounce';
 import styles from './SearchBar.module.css';
@@ -74,9 +75,10 @@ export function SearchBar({
             onClick={handleClear}
             aria-label="Clear search"
           >
-            <img
+            <Image
               src="/close_Small.svg"
-              alt="Clear"
+              alt=""
+              aria-hidden="true"
               width={20}
               height={19}
             />

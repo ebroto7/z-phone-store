@@ -54,7 +54,8 @@
 }
 
 .continueShoppingBtn:hover {
-  background-color: var(--color-btn-secondary-hover-bg);
+  border: var(--border-width-hairline) solid var(--color-ink-hover);
+  color: var(--color-ink-hover);
 }
 
 /* ============================================

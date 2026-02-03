@@ -1,6 +1,19 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { CartFooter } from './CartFooter';
+
+// Mock useCart y useRouter
+vi.mock('@/context/CartContext', () => ({
+  useCart: () => ({
+    clearCart: vi.fn(),
+  }),
+}));
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: vi.fn(),
+  }),
+}));
 
 describe('CartFooter', () => {
   // === HAPPY PATH ===

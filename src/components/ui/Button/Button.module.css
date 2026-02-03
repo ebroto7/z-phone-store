@@ -85,7 +85,7 @@
 }
 
 .primary:hover:not(:disabled) {
-  background-color: var(--color-ink-hover);
+  /* background-color: var(--color-ink-hover); */
 }
 
 .primary:active:not(:disabled) {
@@ -110,7 +110,7 @@
 
 .standard:hover:not(:disabled) {
   border-color: var(--color-ink-hover);
-  color: var(--color-ink-hover);
+  /* color: var(--color-ink-hover); */
 }
 
 .standard:active:not(:disabled) {

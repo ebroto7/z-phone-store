@@ -3,8 +3,9 @@ import { describe, it, expect, vi } from 'vitest';
 import { CartItem } from './CartItem';
 import type { CartItem as CartItemType } from '@/types';
 
-// Mock de next/image
+// Mock de next/image (usa img nativo para tests)
 vi.mock('next/image', () => ({
+  // eslint-disable-next-line @next/next/no-img-element
   default: ({ src, alt, ...props }: { src: string; alt: string }) => (
     <img src={src} alt={alt} {...props} />
   ),
