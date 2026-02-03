@@ -1,9 +1,7 @@
-/* Product page - no padding, cada sección maneja su propio spacing */
 .main {
   width: 100%;
 }
 
-/* Contenido del producto (se añadirá después) */
 .content {
   padding: 0 16px;
   max-width: 1200px;

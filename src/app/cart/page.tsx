@@ -13,14 +13,11 @@ export default function CartPage() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        {/* Título con contador */}
         <h1 className={styles.title}>
           CART{totalItems >= 0 && <span className={styles.titleCount}>({totalItems})</span>}
         </h1>
 
         {!isEmpty && (
-
-          // Lista de items
           <ul className={styles.list}>
             {items.map((item) => (
               <li key={item.id} className={styles.listItem}>
@@ -35,7 +32,6 @@ export default function CartPage() {
         )}
       </div>
 
-      {/* Footer fijo con Total y botones */}
       <CartFooter hasItems={!isEmpty} totalPrice={totalPrice} />
     </main>
   );

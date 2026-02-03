@@ -17,7 +17,6 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
     setSelectedVariant(variant);
   }, []);
 
-  // La imagen cambia según el color seleccionado
   const defaultImageUrl = product.imageUrl || product.colorOptions[0]?.imageUrl || '';
   const imageUrl = selectedVariant?.color.imageUrl ?? defaultImageUrl;
 

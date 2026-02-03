@@ -1,8 +1,3 @@
-/* ===========================================
-   Skip Link - Accesibilidad
-   Oculto visualmente pero accesible con teclado
-   =========================================== */
-
 .skipLink {
   position: absolute;
   top: -100%;

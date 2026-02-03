@@ -1,17 +1,9 @@
-/**
- * API Service
- * Funciones para comunicarse con la API de móviles.
- */
-
 import type { ProductListItem, Product, GetProductsParams } from '@/types';
 import { createApiError, createNetworkError } from '@/lib/errors';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? '';
 const API_KEY = process.env.API_KEY ?? '';
 
-/**
- * Fetch genérico con headers de autenticación y manejo de errores
- */
 async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const url = `${API_BASE}${endpoint}`;
 
@@ -39,10 +31,6 @@ async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> 
   return response.json();
 }
 
-/**
- * Obtener lista de productos
- * GET /products?search=X&limit=N&offset=N
- */
 export async function getProducts(params?: GetProductsParams): Promise<ProductListItem[]> {
   const searchParams = new URLSearchParams();
 
@@ -60,10 +48,6 @@ export async function getProducts(params?: GetProductsParams): Promise<ProductLi
   return fetchAPI<ProductListItem[]>(`products${query ? `?${query}` : ''}`);
 }
 
-/**
- * Obtener detalle de un producto
- * GET /products/:id
- */
 export async function getProductById(id: string): Promise<Product> {
   return fetchAPI<Product>(`products/${id}`);
 }

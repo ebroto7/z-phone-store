@@ -11,24 +11,20 @@
    ============================================= */
 
 .button {
-  /* Reset */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-
-  /* Tipografía - usando variables del design system */
   font-family: var(--font-family);
   font-weight: var(--font-weight-light);
   font-size: var(--font-size-sm);
   line-height: 16px;
-  letter-spacing: 0.08em; /* 8% - específico de botones */
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
-
-  /* Interacción */
   cursor: pointer;
   transition: var(--transition-colors);
+  width: 100%;
 }
 
 .button:focus-visible {
@@ -40,28 +36,19 @@
   cursor: not-allowed;
 }
 
-/* =============================================
-   TAMAÑOS (Breakpoint)
-   - sm = XS-M: altura 48px, padding-y 4px
-   - lg = L-XL: altura 40px, padding-y 3px
-   ============================================= */
+/* ========================================
+   SIZES
+   ======================================== */
 
-/* XS-M (móvil/tablet pequeño) */
 .sm {
   height: 48px;
   padding: 4px 7px;
 }
 
-/* L-XL (desktop/tablet grande) */
 .lg {
   height: 40px;
   padding: 3px 7px;
 }
-
-/* =============================================
-   EXTRA HEIGHT
-   Aumenta padding vertical
-   ============================================= */
 
 .sm.extraHeight {
   height: 56px;
@@ -73,10 +60,9 @@
   padding: 4px 7px;
 }
 
-/* =============================================
-   VARIANTE: PRIMARY (filled)
-   Fondo sólido oscuro, texto blanco
-   ============================================= */
+/* ========================================
+   PRIMARY
+   ======================================== */
 
 .primary {
   background-color: var(--color-ink);
@@ -84,23 +70,18 @@
   color: var(--color-bg-primary);
 }
 
-.primary:hover:not(:disabled) {
-  /* background-color: var(--color-ink-hover); */
-}
-
 .primary:active:not(:disabled) {
   background-color: var(--color-ink-active);
 }
 
 .primary:disabled {
-  background-color: #F3F2F2;
-  color: #C28F8C;
+  background-color: var(--color-btn-primary-disabled-bg);
+  color: #C2BFBC;
 }
 
-/* =============================================
-   VARIANTE: STANDARD (outlined)
-   Solo borde, fondo transparente
-   ============================================= */
+/* ========================================
+   STANDARD
+   ======================================== */
 
 .standard {
   background-color: transparent;
@@ -110,7 +91,6 @@
 
 .standard:hover:not(:disabled) {
   border-color: var(--color-ink-hover);
-  /* color: var(--color-ink-hover); */
 }
 
 .standard:active:not(:disabled) {
@@ -121,15 +101,4 @@
 .standard:disabled {
   border-color: #DBD9D7;
   color: #DBD9D7;
-}
-
-/* =============================================
-   ANCHO
-   El botón se adapta a su contenedor padre.
-   - Si el padre tiene width fijo → el botón lo hereda
-   - Si el padre es flex → usa flex: 1 para repartir espacio
-   ============================================= */
-
-.button {
-  width: 100%;
 }

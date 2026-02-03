@@ -1,7 +1,3 @@
-/**
- * Errores personalizados para la API
- */
-
 export type ApiErrorCode =
   | 'NETWORK_ERROR'    // Sin conexión, timeout, servidor caído
   | 'AUTH_ERROR'       // 401 - API key inválida
@@ -21,9 +17,6 @@ export class ApiError extends Error {
   }
 }
 
-/**
- * Crea un ApiError a partir de un status HTTP
- */
 export function createApiError(status: number, customMessage?: string): ApiError {
   switch (status) {
     case 401:
@@ -55,9 +48,6 @@ export function createApiError(status: number, customMessage?: string): ApiError
   }
 }
 
-/**
- * Crea un ApiError para errores de red (sin respuesta del servidor)
- */
 export function createNetworkError(originalError?: Error): ApiError {
   const isTimeout = originalError?.message?.includes('timeout');
 
@@ -70,9 +60,6 @@ export function createNetworkError(originalError?: Error): ApiError {
   );
 }
 
-/**
- * Verifica si un error es un ApiError
- */
 export function isApiError(error: unknown): error is ApiError {
   return error instanceof ApiError;
 }

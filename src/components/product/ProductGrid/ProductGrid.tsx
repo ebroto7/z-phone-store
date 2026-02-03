@@ -1,17 +1,3 @@
-/**
- * ProductGrid.tsx
- * Grid responsive para mostrar productos.
- *
- * Comportamiento responsive:
- * - Mobile (<656px): 1 columna
- * - Tablet (656-976px): 2 columnas
- * - Desktop (>976px): 3+ columnas auto
- *
- * Cards:
- * - min-width: 320px
- * - max-width: 400px
- */
-
 import { SmartphoneCard } from '../SmartphoneCard/SmartphoneCard';
 import type { ProductListItem } from '@/types';
 import styles from './ProductGrid.module.css';

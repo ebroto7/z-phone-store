@@ -1,37 +1,28 @@
-/* ===========================================
-   Cart Page Styles
-   Mobile-first approach
-   Using CSS variables from globals.css
-   =========================================== */
-
 .main {
   min-height: calc(100vh - var(--navbar-height));
-  padding-top: var(--space-6); /* 24px */
-  /* Espacio para el footer fijo */
-  padding-bottom: 140px; /* Mobile: footer ~129px + margen */
+  padding-top: var(--space-6);
+  padding-bottom: 140px;
 }
 
 .container {
   max-width: var(--container-max-width);
-  padding: 0 var(--space-4); /* 16px */
+  padding: 0 var(--space-4);
 }
 
-/* Título */
 .title {
   font-family: var(--font-family);
-  font-size: var(--font-size-lg); /* 20px */
-  font-weight: var(--font-weight-light); /* 300 */
-  letter-spacing: var(--letter-spacing-wider); /* 0.1em */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
-  margin-bottom: var(--space-8); /* 32px */
+  margin-bottom: var(--space-8);
 }
 
 .titleCount {
   font-weight: var(--font-weight-light);
-  margin-left: var(--space-2); /* 8px */
+  margin-left: var(--space-2);
 }
 
-/* Lista de items */
 .list {
   list-style: none;
   padding: 0;
@@ -46,53 +37,48 @@
   border-bottom: var(--border-width-hairline) solid var(--color-border);
 }
 
-/* Estado vacío */
 .empty {
-  padding: var(--space-16) 0; /* 64px */
+  padding: var(--space-16) 0;
   text-align: center;
 }
 
 .emptyText {
   font-family: var(--font-family);
-  font-size: var(--font-size-base); /* 14px */
-  font-weight: var(--font-weight-light); /* 400 */
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-light);
   color: var(--color-content-mid);
 }
 
-/* ===========================================
-   Tablet (≥768px)
-   =========================================== */
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
 @media (min-width: 768px) {
   .main {
-    /* Footer tablet: ~112px + margen */
     padding-bottom: 130px;
   }
 
   .container {
-    padding: 0 var(--space-10); /* 40px */
+    padding: 0 var(--space-10);
   }
 
   .title {
-    font-size: var(--font-size-xl); /* 24px */
-    margin-bottom: var(--space-10); /* 40px */
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-10);
   }
 }
 
-/* ===========================================
-   Desktop (≥1024px)
-   =========================================== */
 @media (min-width: 1024px) {
   .main {
-    padding-top: var(--space-12); /* 48px */
-    /* Footer desktop: ~136px + margen */
+    padding-top: var(--space-12);
     padding-bottom: 160px;
   }
 
   .container {
-    padding: 0 100px; /* No hay variable para 100px, valor específico */
+    padding: 0 100px;
   }
 
   .title {
-    margin-bottom: var(--space-12); /* 48px */
+    margin-bottom: var(--space-12);
   }
 }

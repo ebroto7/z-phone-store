@@ -22,21 +22,18 @@ export function SearchBar({
   const [value, setValue] = useState(defaultValue);
   const debouncedValue = useDebounce(value, debounceMs);
 
-  // Sincronizar con URL cuando cambia externamente (back/forward)
+  // Sync with URL on back/forward navigation
   useEffect(() => {
     const urlSearch = searchParams.get('search') || '';
     if (urlSearch !== value) {
       setValue(urlSearch);
     }
-    // Solo ejecutar cuando cambian los searchParams, no value
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  // Cuando cambia el valor debounced, navegar
   useEffect(() => {
     const currentSearch = searchParams.get('search') || '';
 
-    // Solo navegar si el valor cambió respecto a la URL actual
     if (debouncedValue !== currentSearch) {
       if (debouncedValue) {
         router.push(`/?search=${encodeURIComponent(debouncedValue)}`);

@@ -17,15 +17,12 @@ export function ProductInfo({
   selectedVariant,
   onVariantChange,
 }: ProductInfoProps) {
-  // El precio mostrado depende del storage seleccionado
   const displayPrice = selectedVariant?.storage.price ?? product.basePrice;
 
   const handleStorageChange = (capacity: string) => {
-    // Buscar el StorageOption completo por capacidad
     const storage = product.storageOptions.find((s) => s.capacity === capacity);
     if (!storage) return;
 
-    // Si no hay color seleccionado, usar el primero disponible
     const defaultColor = product.colorOptions[0];
     const currentColor = selectedVariant?.color ?? defaultColor;
     if (currentColor) {
@@ -34,11 +31,9 @@ export function ProductInfo({
   };
 
   const handleColorChange = (colorName: string) => {
-    // Buscar el ColorOption completo por nombre
     const color = product.colorOptions.find((c) => c.name === colorName);
     if (!color) return;
 
-    // Si no hay storage seleccionado, usar el primero disponible
     const defaultStorage = product.storageOptions[0];
     const currentStorage = selectedVariant?.storage ?? defaultStorage;
     if (currentStorage) {
@@ -46,18 +41,15 @@ export function ProductInfo({
     }
   };
 
-  // Verificar si hay una variante válida seleccionada
   const canAddToCart = selectedVariant !== null;
 
   return (
     <div className={styles.info}>
-      {/* Título y precio */}
       <header className={styles.header}>
         <h1 className={styles.name}>{product.name}</h1>
         <p className={styles.price}>From {displayPrice} EUR</p>
       </header>
 
-      {/* Selectores */}
       <div className={styles.selectors}>
         <fieldset className={styles.fieldset}>
           <legend className={styles.label}>
@@ -81,7 +73,6 @@ export function ProductInfo({
         </fieldset>
       </div>
 
-      {/* Botón añadir al carrito */}
       <AddToCartButton
         disabled={!canAddToCart}
         product={product}

@@ -6,7 +6,6 @@ interface ProductSpecificationsProps {
   specs: ProductSpecs;
 }
 
-// Mapeo de claves técnicas a labels legibles
 const SPEC_LABELS: Record<keyof ProductSpecs, string> = {
   screen: 'Screen',
   resolution: 'Resolution',
@@ -18,7 +17,6 @@ const SPEC_LABELS: Record<keyof ProductSpecs, string> = {
   screenRefreshRate: 'Screen Refresh Rate',
 };
 
-// Orden de las especificaciones
 const SPEC_ORDER: (keyof ProductSpecs)[] = [
   'screen',
   'resolution',

@@ -1,8 +1,3 @@
-/**
- * Route Handler: /api/products
- * Proxy seguro para búsqueda de productos sin exponer API_KEY.
- */
-
 import { NextRequest, NextResponse } from 'next/server';
 import { getProducts } from '@/services/api';
 import { isApiError } from '@/lib/errors';

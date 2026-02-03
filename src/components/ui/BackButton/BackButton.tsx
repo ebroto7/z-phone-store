@@ -6,7 +6,6 @@ import Image from 'next/image';
 import styles from './BackButton.module.css';
 
 interface BackButtonProps {
-  /** Si se pasa href, usa Link. Si no, usa router.back() */
   href?: string;
 }
 

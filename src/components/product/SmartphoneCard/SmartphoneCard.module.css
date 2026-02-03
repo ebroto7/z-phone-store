@@ -1,8 +1,3 @@
-/**
- * SmartphoneCard.module.css
- * Estilos pixel-perfect según Figma.
- */
-
 @keyframes slideInFromRight {
   from {
     opacity: 0;
@@ -29,7 +24,6 @@
   overflow: hidden;
 }
 
-/* Capa negra que crece desde abajo en hover */
 .card::before {
   content: '';
   position: absolute;

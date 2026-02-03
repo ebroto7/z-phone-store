@@ -1,64 +1,20 @@
-/**
- * StorageSelector.module.css
- *
- * Especificaciones EXACTAS del Figma:
- *
- * Container Storage:
- * - Display: flex (horizontal)
- * - Gap: 24px (margen interior entre opciones)
- *
- * Opción (Selected=False):
- * - Padding: 16px (todos los lados)
- * - Borde: 1px #CCCCCC (gris)
- * - Fondo: transparente
- *
- * Opción (Selected=True):
- * - Padding: 16px
- * - Borde: 1px #000000 (negro)
- * - Fondo: #000000
- * - Texto: blanco
- *
- * Texto "128 GB":
- * - Fuente: Helvetica Neue
- * - Peso: 300 (Light)
- * - Tamaño: 14px
- * - Line-height: 100%
- * - Color: #000000 (negro cuando no selected)
- */
-
 .container {
-  /* Layout horizontal del Figma */
   display: flex;
   flex-wrap: wrap;
-  /* gap: var(--space-6);  */
-  /* 24px - margen interior del Figma */
 }
 
-/* =============================================
-   BOTÓN DE OPCIÓN - Estado Default (Unselected)
-   ============================================= */
-
 .option {
-  /* Padding del Figma: 16px todos los lados */
   padding: var(--space-4);
   margin-inline: -0.25px;
   min-width: 95px;
-  /* Tipografía exacta del Figma */
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  /* 14px */
   font-weight: var(--font-weight-light);
-  /* 300 */
   line-height: 100%;
   color: var(--color-content-high);
   text-align: center;
-
-  /* Borde y fondo - Estado Default: borde GRIS */
   background-color: transparent;
   border: var(--border-width) solid var(--color-border-mid);
-  /* #CCCCCC */
-
-  /* Interacción */
   cursor: pointer;
   transition:
     background-color var(--transition-fast),
@@ -66,19 +22,12 @@
     color var(--transition-fast);
 }
 
-
-/* Focus visible para accesibilidad */
 .option:focus-visible {
   outline: 2px solid var(--color-content-high);
   outline-offset: 2px;
 }
 
-/* =============================================
-   BOTÓN DE OPCIÓN - Estado Selected
-   ============================================= */
-
 .selected {
-
   border-color: var(--color-content-high);
-z-index: 1;
+  z-index: 1;
 }
