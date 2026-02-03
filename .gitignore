@@ -4,7 +4,8 @@
 docs/
 .claude/
 CLAUDE.md
-
+BACKLOG.md
+AUDIT_REPORT.md
 
 # dependencies
 /node_modules
