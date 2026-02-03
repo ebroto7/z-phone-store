@@ -71,7 +71,7 @@ export function ProductProvider({ children, initialProducts = [] }: ProductProvi
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Error desconocido';
       setError(message);
-      setProducts([]);
+      // Mantener productos actuales en caso de error (mejor UX)
     } finally {
       setIsLoading(false);
     }

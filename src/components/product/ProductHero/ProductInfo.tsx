@@ -1,8 +1,8 @@
 'use client';
 
 import { Product, ProductVariant } from '@/types';
-import { StorageSelector } from '@/components/ui/StorageSelector';
-import { ColorOptions } from '@/components/ui/ColorOptions';
+import { StorageSelector } from '@/components/ui/StorageSelector/StorageSelector';
+import { ColorOptions } from '@/components/ui/ColorOptions/ColorOptions';
 import { AddToCartButton } from './AddToCartButton';
 import styles from './ProductInfo.module.css';
 

@@ -17,7 +17,7 @@
  * - onChange: Callback cuando se selecciona un color
  */
 
-import { Color } from './Color';
+import { Color } from '../Color/Color';
 import styles from './ColorOptions.module.css';
 
 interface ColorOption {

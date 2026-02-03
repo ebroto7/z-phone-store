@@ -1,1 +1,0 @@
-export { SimilarItems } from './SimilarItems';

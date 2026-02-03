@@ -1,5 +1,5 @@
 import { ProductProvider } from '@/context/ProductContext';
-import { HomeContent } from '@/components/home/HomeContent';
+import { HomeContent } from '@/components/home/HomeContent/HomeContent';
 import { SearchBar } from '@/components/ui/SearchBar/SearchBar';
 import { getProducts } from '@/services/api';
 import styles from './page.module.css';

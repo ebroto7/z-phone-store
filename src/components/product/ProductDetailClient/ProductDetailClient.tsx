@@ -2,8 +2,8 @@
 
 import { useState, useCallback } from 'react';
 import { Product, ProductVariant } from '@/types';
-import { ProductImage } from './ProductHero/ProductImage';
-import { ProductInfo } from './ProductHero/ProductInfo';
+import { ProductImage } from '../ProductHero/ProductImage';
+import { ProductInfo } from '../ProductHero/ProductInfo';
 import styles from './ProductDetailClient.module.css';
 
 interface ProductDetailClientProps {

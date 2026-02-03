@@ -341,7 +341,7 @@ describe('CartContext', () => {
 
       localStorageMock.getItem.mockReturnValueOnce(JSON.stringify(savedItems));
 
-      const { result } = renderHook(() => useCart(), { wrapper });
+      renderHook(() => useCart(), { wrapper });
 
       // Esperar hidratación
       expect(localStorageMock.getItem).toHaveBeenCalledWith('cart');

@@ -2,7 +2,9 @@ import { notFound } from 'next/navigation';
 import { getProductById } from '@/services/api';
 import { isApiError } from '@/lib/errors';
 import { BackButton } from '@/components/ui/BackButton/BackButton';
-import { ProductDetailClient, ProductSpecifications, SimilarItems } from '@/components/product';
+import { ProductDetailClient } from '@/components/product/ProductDetailClient/ProductDetailClient';
+import { ProductSpecifications } from '@/components/product/ProductSpecifications/ProductSpecifications';
+import { SimilarItems } from '@/components/product/SimilarItems/SimilarItems';
 import styles from './page.module.css';
 
 interface ProductPageProps {

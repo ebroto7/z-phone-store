@@ -1,8 +1,8 @@
 'use client';
 
 import { useCart } from '@/context/CartContext';
-import { CartItem } from '@/components/cart/CartItem';
-import { CartFooter } from '@/components/cart/CartFooter';
+import { CartItem } from '@/components/cart/CartItem/CartItem';
+import { CartFooter } from '@/components/cart/CartFooter/CartFooter';
 import styles from './page.module.css';
 
 export default function CartPage() {

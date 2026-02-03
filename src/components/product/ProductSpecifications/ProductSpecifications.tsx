@@ -1,5 +1,5 @@
 import { ProductSpecs } from '@/types';
-import { SpecificationRow } from '@/components/ui/SpecificationRow';
+import { SpecificationRow } from '@/components/ui/SpecificationRow/SpecificationRow';
 import styles from './ProductSpecifications.module.css';
 
 interface ProductSpecificationsProps {
