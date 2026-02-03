@@ -23,7 +23,7 @@ Aplicación web para visualización, búsqueda y gestión de un catálogo de tel
 ## Instalación
 
 ```bash
-git clone <url>
+git clone https://github.com/ebroto7/z-phone-store.git
 cd z-phone-store
 nvm use          # Node 22
 pnpm install
