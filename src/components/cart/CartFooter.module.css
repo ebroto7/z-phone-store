@@ -1,0 +1,220 @@
+/* ===========================================
+   Cart Footer Styles
+   Mobile-first approach
+   Based on Figma analysis - pixel perfect
+   =========================================== */
+
+/* ============================================
+   FOOTER CONTAINER
+   ============================================ */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-primary);
+  z-index: var(--z-sticky);
+}
+
+.footerContent {
+  /* Mobile: Vertical layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6); /* 24px */
+  padding: var(--space-4) var(--space-4) var(--space-6) var(--space-4); /* 16px 16px 24px 16px */
+}
+
+/* ============================================
+   CONTINUE SHOPPING BUTTON (Secondary)
+   ============================================ */
+.continueShoppingBtn {
+  /* Mobile: flex: 1, full width in buttons row */
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 5px 7px;
+
+  /* Style: Secondary button */
+  background-color: transparent;
+  border: var(--border-width-hairline) solid var(--color-btn-secondary-border);
+
+  /* Typography */
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-btn-secondary-text);
+
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.continueShoppingBtn:hover {
+  background-color: var(--color-btn-secondary-hover-bg);
+}
+
+/* ============================================
+   TOTAL AND PAY CONTAINER
+   ============================================ */
+.totalAndPay {
+  /* Mobile: Column layout - Total arriba, Pay abajo */
+  display: contents;
+}
+
+/* ============================================
+   TOTAL ROW
+   ============================================ */
+.totalRow {
+  /* Mobile: Full width, space-between */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  order: -1; /* Total arriba de los botones en mobile */
+}
+
+.totalLabel {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-content-high);
+}
+
+.totalPrice {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light);
+  color: var(--color-content-high);
+}
+
+/* ============================================
+   PAY BUTTON (Primary)
+   ============================================ */
+.payBtn {
+  /* Mobile: flex: 1, share space with continue shopping */
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 5px 7px;
+
+  /* Style: Primary button */
+  background-color: var(--color-btn-primary-bg);
+  border: none;
+
+  /* Typography */
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-btn-primary-text);
+
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.payBtn:hover {
+  background-color: var(--color-btn-primary-hover-bg);
+}
+
+/* ============================================
+   MOBILE LAYOUT (<768px)
+   Estructura:
+   - Footer vertical, gap 24px
+   - Fila 1: Total (space-between)
+   - Fila 2: Buttons (horizontal, gap 12px, flex:1)
+   ============================================ */
+@media (max-width: 767px) {
+  .footerContent {
+    /* Usamos CSS Grid para el layout mobile */
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6) var(--space-3); /* 24px vertical, 12px horizontal */
+  }
+
+  .totalRow {
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
+    grid-row: 1;
+  }
+
+  .continueShoppingBtn {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .payBtn {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Cuando no hay items, solo continueShoppingBtn visible */
+  .footerContent:not(:has(.totalAndPay)) .continueShoppingBtn {
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
+  }
+}
+
+/* ============================================
+   TABLET (≥768px)
+   Estructura:
+   - Footer horizontal, justify space-between
+   - Izquierda: Continue shopping (260px fijo)
+   - Derecha: Total + Pay (gap 80px)
+   ============================================ */
+@media (min-width: 768px) {
+  .footerContent {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: var(--space-6) var(--space-10) var(--space-10) var(--space-10); /* 24px 40px 40px 40px */
+  }
+
+  .continueShoppingBtn {
+    flex: none;
+    width: 260px;
+    height: 56px;
+  }
+
+  .totalAndPay {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 80px; /* Figma: gap 80px entre Total y Pay */
+  }
+
+  .totalRow {
+    order: 0;
+    gap: var(--space-6); /* 24px entre label y price */
+  }
+
+  .totalLabel,
+  .totalPrice {
+    font-size: var(--font-size-sm); /* 12px */
+  }
+
+  .payBtn {
+    flex: none;
+    width: 260px;
+    height: 56px;
+  }
+}
+
+/* ============================================
+   DESKTOP (≥1024px)
+   Estructura:
+   - Mismo que tablet pero con padding diferente
+   - Padding: 24px 100px 56px 100px
+   ============================================ */
+@media (min-width: 1024px) {
+  .footerContent {
+    padding: var(--space-6) 100px 56px 100px; /* 24px 100px 56px 100px */
+  }
+}

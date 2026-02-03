@@ -1,0 +1,216 @@
+/* ===========================================
+   CartItem Styles
+   Mobile-first approach
+   Using CSS variables from globals.css
+
+   Based on Figma Analysis:
+   - Base component: 548x324px, gap 40px
+   - Image wrapper: 262x324px
+   - Info+delete: 246x324px, space-between, padding 40px top/bottom
+   =========================================== */
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-6); /* 24px */
+  padding: var(--space-6) 0;
+  width: 100%;
+}
+
+/* ===========================================
+   Image Wrapper
+   Base: 262x324px, vertical, gap 10px
+   =========================================== */
+.imageWrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 120px;
+  height: 150px;
+}
+
+.image {
+  object-fit: contain;
+}
+
+/* ===========================================
+   Info + Delete Container
+   Base: vertical, space-between, padding 40px
+   =========================================== */
+.infoDeleteWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  height: 150px;
+  padding: var(--space-4) 0; /* 16px */
+}
+
+/* ===========================================
+   Info Section
+   Base: 246x69px, vertical, gap 20px
+   =========================================== */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* 8px */
+}
+
+.name {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light); /* 300 */
+  line-height: var(--line-height-tight);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.specs {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light); /* 300 */
+  color: var(--color-content-high);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.price {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light); /* 300 */
+  color: var(--color-content-high);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+/* ===========================================
+   Quantity Selector
+   Estilo Zara: minimalista con - / número / +
+   =========================================== */
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4); /* 16px */
+  margin-top: var(--space-2); /* 8px */
+}
+
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size-md); /* 24px */
+  height: var(--icon-size-md); /* 24px */
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md); /* 16px */
+  font-weight: var(--font-weight-light); /* 300 */
+  color: var(--color-content-high);
+  transition: opacity var(--transition-fast);
+}
+
+.quantityButton:hover {
+  opacity: 0.6;
+}
+
+.quantityValue {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base); /* 14px */
+  font-weight: var(--font-weight-light); /* 300 */
+  color: var(--color-content-high);
+  min-width: var(--space-5); /* 20px */
+  text-align: center;
+}
+
+/* ===========================================
+   Delete Button
+   Base: 41x15px, Helvetica Neue 300, 12px, #DF0000
+   Note: #DF0000 is specific from Figma, not using --color-error
+   =========================================== */
+.removeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm); /* 12px */
+  font-weight: var(--font-weight-light); /* 300 */
+  color: #DF0000; /* Figma specific color */
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.removeButton:hover {
+  opacity: 0.7;
+}
+
+/* ===========================================
+   Tablet (≥768px)
+   Cart Item: fill (754px) × 324px
+   =========================================== */
+@media (min-width: 768px) {
+  .item {
+    gap: var(--space-10); /* 40px */
+    padding: var(--space-10) 0;
+  }
+
+  .imageWrapper {
+    width: 200px;
+    height: 248px;
+  }
+
+  .infoDeleteWrapper {
+    height: 248px;
+    padding: var(--space-6) 0; /* 24px */
+  }
+
+  .info {
+    gap: var(--space-3); /* 12px */
+  }
+
+  .name {
+    font-size: var(--font-size-md); /* 16px */
+    white-space: normal;
+  }
+
+  .specs {
+    font-size: var(--font-size-base); /* 14px */
+  }
+
+  .price {
+    font-size: var(--font-size-md); /* 16px */
+  }
+}
+
+/* ===========================================
+   Desktop (≥1024px)
+   Cart Item: 548x324px (fixed) - matches base
+   =========================================== */
+@media (min-width: 1024px) {
+  .item {
+    gap: var(--space-10); /* 40px */
+    padding: var(--space-10) 0;
+  }
+
+  .imageWrapper {
+    width: 262px;
+    height: 324px;
+  }
+
+  .infoDeleteWrapper {
+    height: 324px;
+    padding: var(--space-10) 0; /* 40px */
+  }
+
+  .info {
+    gap: var(--space-5); /* 20px */
+  }
+}
