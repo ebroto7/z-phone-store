@@ -1,0 +1,85 @@
+/* ProductInfo - Panel de información del producto */
+
+.info {
+  /* Mobile: full width, gap 40px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Header: nombre + precio */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #000000;
+  margin: 0;
+}
+
+.price {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #000000;
+  margin: 0;
+}
+
+/* Selectores container */
+.selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Fieldset común para selectores */
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.label {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.hint {
+  text-transform: none;
+  font-weight: 300;
+}
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .info {
+    width: 362px;
+    flex-shrink: 0;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .info {
+    width: 380px;
+    gap: 64px;
+  }
+}

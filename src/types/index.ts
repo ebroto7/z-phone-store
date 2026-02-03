@@ -14,6 +14,7 @@ export interface Product {
   name: string;
   description: string;
   basePrice: number;
+  imageUrl: string;
   rating: number;
   specs: ProductSpecs;
   colorOptions: ColorOption[];
@@ -41,6 +42,12 @@ export interface ColorOption {
 export interface StorageOption {
   capacity: string; // "64GB", "128GB", "256GB"
   price: number;
+}
+
+// === Variante seleccionada ===
+export interface ProductVariant {
+  color: ColorOption;
+  storage: StorageOption;
 }
 
 // === Carrito ===

@@ -1,0 +1,31 @@
+/* ProductDetailClient - Layout principal de imagen + info */
+
+.container {
+  /* Mobile first: layout vertical */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  padding: 0 16px;
+}
+
+/* Tablet: 768px+ - layout horizontal */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 754px;
+    margin: 0 auto;
+    padding: 0 40px;
+    gap: 0;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 100px;
+  }
+}

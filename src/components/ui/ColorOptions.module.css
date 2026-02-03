@@ -27,7 +27,7 @@
 .colors {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Espacio exacto del Figma */
+  gap: var(--space-4); /* Espacio exacto del Figma */
 }
 
 /* Label con el nombre del color */
@@ -37,4 +37,5 @@
   font-weight: var(--font-weight-light); /* 300 */
   color: var(--color-content-high);
   line-height: 1;
+  min-height: 1em; /* Reserva espacio aunque esté vacío */
 }

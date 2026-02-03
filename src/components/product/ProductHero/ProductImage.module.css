@@ -1,0 +1,30 @@
+/* ProductImage - Contenedor de imagen del producto */
+
+.container {
+  /* Mobile: full width */
+  position: relative;
+  width: 100%;
+  /* Aspect ratio basado en Figma: 510x630 = ~0.81 */
+  aspect-ratio: 510 / 630;
+}
+
+.image {
+  object-fit: contain;
+}
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .container {
+    width: 392px;
+    flex-shrink: 0;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .container {
+    width: 510px;
+    height: 630px;
+    aspect-ratio: auto;
+  }
+}

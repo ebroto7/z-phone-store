@@ -30,7 +30,8 @@
   /* Layout horizontal del Figma */
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-6); /* 24px - margen interior del Figma */
+  /* gap: var(--space-6);  */
+  /* 24px - margen interior del Figma */
 }
 
 /* =============================================
@@ -40,18 +41,22 @@
 .option {
   /* Padding del Figma: 16px todos los lados */
   padding: var(--space-4);
-
+  margin-inline: -0.25px;
+  min-width: 95px;
   /* Tipografía exacta del Figma */
   font-family: var(--font-family);
-  font-size: var(--font-size-base); /* 14px */
-  font-weight: var(--font-weight-light); /* 300 */
+  font-size: var(--font-size-base);
+  /* 14px */
+  font-weight: var(--font-weight-light);
+  /* 300 */
   line-height: 100%;
   color: var(--color-content-high);
   text-align: center;
 
   /* Borde y fondo - Estado Default: borde GRIS */
   background-color: transparent;
-  border: var(--border-width) solid var(--color-border-mid); /* #CCCCCC */
+  border: var(--border-width) solid var(--color-border-mid);
+  /* #CCCCCC */
 
   /* Interacción */
   cursor: pointer;
@@ -61,10 +66,6 @@
     color var(--transition-fast);
 }
 
-/* Hover en estado default */
-.option:hover:not(.selected) {
-  background-color: var(--color-background-hover);
-}
 
 /* Focus visible para accesibilidad */
 .option:focus-visible {
@@ -77,8 +78,7 @@
    ============================================= */
 
 .selected {
-  /* Fondo negro, texto blanco, borde negro */
-  /* background-color: var(--color-content-high); */
-  border-color: var(--color-content-high); /* Cambiar a negro */
-  /* color: var(--color-background); */
+
+  border-color: var(--color-content-high);
+z-index: 1;
 }

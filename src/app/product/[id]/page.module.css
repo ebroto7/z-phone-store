@@ -1,0 +1,23 @@
+/* Product page - no padding, cada sección maneja su propio spacing */
+.main {
+  width: 100%;
+}
+
+/* Contenido del producto (se añadirá después) */
+.content {
+  padding: 0 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    padding: 0 100px;
+  }
+}
