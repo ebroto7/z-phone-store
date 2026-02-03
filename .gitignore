@@ -18,6 +18,10 @@ CLAUDE.md
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/playwright/.cache/
+.last-run.json
 
 # next.js
 /.next/
