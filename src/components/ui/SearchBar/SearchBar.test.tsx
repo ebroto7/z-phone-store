@@ -1,45 +1,49 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { SearchBar } from './SearchBar';
-import { ProductProvider } from '@/context/ProductContext';
 
-// Mock fetch para evitar llamadas reales
-const mockFetch = vi.fn();
-global.fetch = mockFetch;
+// Mock next/navigation
+const mockPush = vi.fn();
+const mockGet = vi.fn();
 
-const mockProducts = [
-  { id: '1', brand: 'Apple', name: 'iPhone 15', basePrice: 999, imageUrl: '/img.jpg' },
-];
-
-const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <ProductProvider initialProducts={mockProducts}>{children}</ProductProvider>
-);
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: mockPush,
+  }),
+  useSearchParams: () => ({
+    get: mockGet,
+  }),
+}));
 
 describe('SearchBar', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: () => Promise.resolve(mockProducts),
-    });
+    mockGet.mockReturnValue(null);
   });
 
   // === HAPPY PATH ===
   it('renders with placeholder', () => {
-    render(<SearchBar />, { wrapper });
+    render(<SearchBar />);
 
     const input = screen.getByPlaceholderText('Search for a smartphone...');
     expect(input).toBeInTheDocument();
   });
 
   it('renders with custom placeholder', () => {
-    render(<SearchBar placeholder="Buscar..." />, { wrapper });
+    render(<SearchBar placeholder="Buscar..." />);
 
     expect(screen.getByPlaceholderText('Buscar...')).toBeInTheDocument();
   });
 
+  it('renders with default value', () => {
+    render(<SearchBar defaultValue="iPhone" />);
+
+    const input = screen.getByRole('textbox');
+    expect(input).toHaveValue('iPhone');
+  });
+
   it('updates value when typing', () => {
-    render(<SearchBar />, { wrapper });
+    render(<SearchBar />);
 
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'iPhone' } });
@@ -48,7 +52,7 @@ describe('SearchBar', () => {
   });
 
   it('shows clear button when has value', () => {
-    render(<SearchBar />, { wrapper });
+    render(<SearchBar />);
 
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test' } });
@@ -57,7 +61,7 @@ describe('SearchBar', () => {
   });
 
   it('clears input when clear button is clicked', () => {
-    render(<SearchBar />, { wrapper });
+    render(<SearchBar />);
 
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test' } });
@@ -68,14 +72,22 @@ describe('SearchBar', () => {
 
   // === EDGE CASES ===
   it('does not show clear button when empty', () => {
-    render(<SearchBar />, { wrapper });
+    render(<SearchBar />);
 
     expect(screen.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
   });
 
   it('has correct accessibility label', () => {
-    render(<SearchBar />, { wrapper });
+    render(<SearchBar />);
 
     expect(screen.getByRole('textbox', { name: /search products/i })).toBeInTheDocument();
+  });
+
+  it('syncs with URL search param', () => {
+    mockGet.mockReturnValue('samsung');
+    render(<SearchBar />);
+
+    const input = screen.getByRole('textbox');
+    expect(input).toHaveValue('samsung');
   });
 });

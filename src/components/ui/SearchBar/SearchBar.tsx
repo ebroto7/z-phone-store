@@ -1,31 +1,49 @@
 'use client';
 
 import { useState, useEffect, type ChangeEvent } from 'react';
-import { useProducts } from '@/context/ProductContext';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useDebounce } from '@/hooks/useDebounce';
 import styles from './SearchBar.module.css';
 
 interface SearchBarProps {
   placeholder?: string;
   debounceMs?: number;
+  defaultValue?: string;
 }
 
 export function SearchBar({
   placeholder = 'Search for a smartphone...',
   debounceMs = 300,
+  defaultValue = '',
 }: SearchBarProps) {
-  const [value, setValue] = useState('');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [value, setValue] = useState(defaultValue);
   const debouncedValue = useDebounce(value, debounceMs);
-  const { searchProducts, clearSearch } = useProducts();
 
-  // Cuando cambia el valor debounced, buscar
+  // Sincronizar con URL cuando cambia externamente (back/forward)
   useEffect(() => {
-    if (debouncedValue) {
-      searchProducts(debouncedValue);
-    } else {
-      clearSearch();
+    const urlSearch = searchParams.get('search') || '';
+    if (urlSearch !== value) {
+      setValue(urlSearch);
     }
-  }, [debouncedValue, searchProducts, clearSearch]);
+    // Solo ejecutar cuando cambian los searchParams, no value
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  // Cuando cambia el valor debounced, navegar
+  useEffect(() => {
+    const currentSearch = searchParams.get('search') || '';
+
+    // Solo navegar si el valor cambió respecto a la URL actual
+    if (debouncedValue !== currentSearch) {
+      if (debouncedValue) {
+        router.push(`/?search=${encodeURIComponent(debouncedValue)}`);
+      } else {
+        router.push('/');
+      }
+    }
+  }, [debouncedValue, router, searchParams]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
